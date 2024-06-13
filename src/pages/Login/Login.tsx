@@ -1,13 +1,14 @@
 import { Box, Button, InputBase, Typography } from '@mui/material';
-import axios from 'axios';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Login() {
   const [email, setEmail] = useState('')
 
+    const navigate = useNavigate()
+
   const handleClick = async () => {
-    const response = await axios.get('https://backend-learning-styles.vercel.app/')
-    console.log(response)
+    navigate('/models')
   }
 
   return (
