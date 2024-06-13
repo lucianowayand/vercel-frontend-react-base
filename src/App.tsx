@@ -1,27 +1,12 @@
-import './App.css'
-import axios from 'axios';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login/Login";
 
-function App() {
-  const name = "ian";
-  const surname = "sakashita";
-
-  const handleClick = async () => {
-    const response = await axios.get('https://backend-learning-styles.vercel.app/')
-    console.log(response)
-  }
-
+export default function App() {
   return (
-    <>
-      <div>
-        <p>
-          O {name} casou com o {surname}
-        </p>
-        <button onClick={handleClick}>
-          Click
-        </button>
-        </div>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
-
-export default App
