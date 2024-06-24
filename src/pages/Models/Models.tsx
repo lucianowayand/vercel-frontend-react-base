@@ -3,16 +3,21 @@ import { ModelService } from "../../services/models";
 import { useEffect, useState } from "react";
 import { ModelDTO } from "../../dto/model.dto";
 import { ModelCard } from "./ModelCard";
+import { ResolutionService } from "../../services/resolutions";
+import { ResolutionDTO } from "../../dto/resolution.dto";
 
 export default function Login() {
-  const [loading, setLoading] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [models, setModels] = useState<ModelDTO[]>([]);
+  const [resolutions, setResolutions] = useState<ResolutionDTO[]>([]);
 
   const fetchModels = async () => {
-    setLoading(true);
     try {
-      const { data } = await ModelService.findAll();
-      setModels(data);
+      const { data: modelData } = await ModelService.findAll();
+      setModels(modelData);
+
+      const { data: resolutionData } = await ResolutionService.fetchAll();
+      setResolutions(resolutionData);
     } catch (error) {
       console.error(error);
     }
@@ -82,7 +87,14 @@ export default function Login() {
             }}
           >
             {models.map((model) => (
-              <ModelCard model={model} />
+              <ModelCard
+                model={model}
+                resolution={
+                  resolutions.filter(
+                    (element) => element.learningType?.modelId === model.id
+                  )[0]
+                }
+              />
             ))}
           </Box>
         </Box>

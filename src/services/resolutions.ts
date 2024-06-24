@@ -19,7 +19,12 @@ const findByModelId = (
   return api.get(`/resolutions/model/${modelId}`);
 };
 
+const fetchAll = (): Promise<AxiosResponse<ResolutionDTO[]>> => {
+  return api.get(`/resolutions`);
+};
+
 export const ResolutionService = {
   create,
   findByModelId,
+  fetchAll,
 };

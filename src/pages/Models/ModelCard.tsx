@@ -1,8 +1,15 @@
 import { Box, Typography } from "@mui/material";
 import { ModelDTO } from "../../dto/model.dto";
 import { useNavigate } from "react-router-dom";
+import { ResolutionDTO } from "../../dto/resolution.dto";
 
-export const ModelCard = ({ model }: { model: ModelDTO }) => {
+export const ModelCard = ({
+  model,
+  resolution,
+}: {
+  model: ModelDTO;
+  resolution?: ResolutionDTO;
+}) => {
   const navigate = useNavigate();
 
   const InfoLabel = ({
@@ -82,6 +89,10 @@ export const ModelCard = ({ model }: { model: ModelDTO }) => {
         <InfoLabel
           label="QTD. DE QUESTIONARIOS"
           value={model.questionaries?.length.toString() || "0"}
+        />
+        <InfoLabel
+          label="RESULTADO"
+          value={(resolution && resolution?.learningType.name) || "-"}
         />
       </Box>
     </Box>

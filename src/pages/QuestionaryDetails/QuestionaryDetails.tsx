@@ -95,7 +95,7 @@ export const QuestionaryDetails = () => {
           }}
         >
           {questionary?.questions &&
-            questionary.questions.map((question) => (
+            questionary.questions.map((question, index) => (
               <Box
                 key={question.id}
                 sx={{
@@ -105,7 +105,7 @@ export const QuestionaryDetails = () => {
                 }}
               >
                 <Typography variant="h6" fontFamily="Inter" color="black">
-                  {question.text}
+                  {index + 1} - {question.text}
                 </Typography>
                 <Box
                   sx={{
