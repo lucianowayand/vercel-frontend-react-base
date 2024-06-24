@@ -1,27 +1,24 @@
 import { Box, Button, InputBase, Typography } from "@mui/material";
-import { useState } from "react";
-import { UserService } from "../../services/user";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../context/AuthContextProvider";
 
 export default function Login() {
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
 
-  // const navigate = useNavigate();
-  // navigate("/models");
+  const { login } = useContext(AuthContext);
 
   const handleClick = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     if (!email || !password) return;
 
-    const res = await UserService.login({ email, password: "123" });
-    localStorage.setItem("token", res.data.authToken);
+    login({ email, password });
   };
 
   return (
     <Box
       sx={{
-        width: "100vw",
         height: "100vh",
         display: "flex",
         flexDirection: "column",
@@ -60,6 +57,7 @@ export default function Login() {
           <Typography>Senha</Typography>
           <InputBase
             value={password}
+            type="password"
             onChange={(event) => setPassword(event.target.value)}
             sx={{ border: "1px solid black", borderRadius: "8px" }}
             required
