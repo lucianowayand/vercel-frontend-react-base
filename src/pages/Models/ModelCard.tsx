@@ -1,7 +1,10 @@
 import { Box, Typography } from "@mui/material";
 import { ModelDTO } from "../../dto/model.dto";
+import { useNavigate } from "react-router-dom";
 
 export const ModelCard = ({ model }: { model: ModelDTO }) => {
+  const navigate = useNavigate();
+
   const InfoLabel = ({
     label,
     value,
@@ -49,9 +52,20 @@ export const ModelCard = ({ model }: { model: ModelDTO }) => {
         display: "flex",
         alignItems: "center",
         "&:hover": {
-          background: model.questionaries.length > 0 ? "#E0E0E0" : undefined,
-          cursor: model.questionaries.length > 0 ? "pointer" : "not-allowed",
+          background:
+            model?.questionaries && model.questionaries.length > 0
+              ? "#E0E0E0"
+              : undefined,
+          cursor:
+            model?.questionaries && model?.questionaries.length > 0
+              ? "pointer"
+              : "not-allowed",
         },
+      }}
+      onClick={() => {
+        if (model?.questionaries && model?.questionaries?.length > 0) {
+          navigate(`/models/${model.id}`);
+        }
       }}
     >
       <Box

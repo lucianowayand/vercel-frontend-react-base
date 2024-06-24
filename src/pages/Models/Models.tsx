@@ -1,5 +1,5 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
-import { ModelsService } from "../../services/models";
+import { ModelService } from "../../services/models";
 import { useEffect, useState } from "react";
 import { ModelDTO } from "../../dto/model.dto";
 import { ModelCard } from "./ModelCard";
@@ -11,7 +11,7 @@ export default function Login() {
   const fetchModels = async () => {
     setLoading(true);
     try {
-      const { data } = await ModelsService.findAll();
+      const { data } = await ModelService.findAll();
       setModels(data);
     } catch (error) {
       console.error(error);
