@@ -4,6 +4,7 @@ import { LearningTypeDTO } from "./learning-type.dto";
 export interface QuestionaryDTO extends CoreDTO {
   name: string;
   modelId: string;
+  questions?: QuestionDTO[];
 }
 
 export interface QuestionDTO extends CoreDTO {

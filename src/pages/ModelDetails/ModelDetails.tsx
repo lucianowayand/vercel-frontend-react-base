@@ -99,7 +99,7 @@ export const ModelDetails = () => {
             onClick={() => {
               if (model?.questionaries && model?.questionaries.length > 0) {
                 navigate(
-                  `/models/${id}/questionary/${model?.questionaries[0].id}`
+                  `/models/${id}/questionaries/${model?.questionaries[0].id}`
                 );
               } else {
                 console.log(model);
@@ -147,8 +147,10 @@ export const ModelDetails = () => {
         <Box
           sx={{
             height: "100%",
+            width: "100%",
             display: "flex",
             alignItems: "center",
+            justifyContent: "center",
           }}
         >
           {!loading && model ? <Details /> : <CircularProgress />}
