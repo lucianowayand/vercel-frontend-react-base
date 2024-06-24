@@ -1,72 +1,60 @@
-import { Box, Button, InputBase, Typography } from "@mui/material";
-import { useContext, useState } from "react";
-import { AuthContext } from "../../context/AuthContextProvider";
+import { Box, Typography } from "@mui/material";
+import { LoginForm } from "./LoginForm";
 
 export default function Login() {
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
-
-  const { login } = useContext(AuthContext);
-
-  const handleClick = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-
-    if (!email || !password) return;
-
-    login({ email, password });
-  };
-
   return (
     <Box
       sx={{
         height: "100vh",
+        width: "100vw",
+        overflow: "hidden",
         display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
+        flexDirection: "row",
+        alignItems: "start",
+        background: "linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%)",
       }}
     >
       <Box
         sx={{
-          border: "1px solid gray",
-          borderRadius: "8px",
-          width: "250px",
+          background: "white",
+          width: "30vw",
+          height: "100vh",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          justifyContent: "center",
-          padding: "20px",
-          gap: "20px",
+          paddingTop: "10%",
         }}
-        component="form"
-        onClick={(event) => handleClick(event)}
       >
-        <Typography>Página de Login</Typography>
-
+        <LoginForm />
+      </Box>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "100%",
+        }}
+      >
         <Box>
-          <Typography>Email</Typography>
-          <InputBase
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-            sx={{ border: "1px solid black", borderRadius: "8px" }}
-            required
-          />
+          <Typography
+            sx={{
+              fontFamily: "Inter",
+              fontSize: "72px",
+              color: "white",
+            }}
+          >
+            Learning Styles
+          </Typography>
+          <Typography
+            sx={{
+              fontFamily: "Inter",
+              color: "lightgrey",
+            }}
+          >
+            Descubra seu estilo de aprendizado
+          </Typography>
         </Box>
-
-        <Box>
-          <Typography>Senha</Typography>
-          <InputBase
-            value={password}
-            type="password"
-            onChange={(event) => setPassword(event.target.value)}
-            sx={{ border: "1px solid black", borderRadius: "8px" }}
-            required
-          />
-        </Box>
-
-        <Button variant="contained" type="submit">
-          Entrar
-        </Button>
       </Box>
     </Box>
   );

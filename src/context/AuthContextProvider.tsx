@@ -1,6 +1,5 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 import { UserService } from "../services/user";
-import { CircularProgress } from "@mui/material";
 
 export const AuthContext = createContext<{
   login: ({ email, password }: { email: string; password: string }) => void;
@@ -15,8 +14,6 @@ export const AuthContextProvider = ({
 }: {
   children: JSX.Element;
 }) => {
-  const [loading, setLoading] = useState<boolean>(false);
-
   const login = async ({
     email,
     password,
@@ -24,13 +21,13 @@ export const AuthContextProvider = ({
     email: string;
     password: string;
   }) => {
-    setLoading(true);
-
-    const res = await UserService.login({ email, password });
-    localStorage.setItem("token", res.data.authToken);
-    window.location.href = "/models";
-
-    setLoading(false);
+    try {
+      const res = await UserService.login({ email, password });
+      localStorage.setItem("token", res.data.authToken);
+      window.location.href = "/models";
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const logout = () => {
@@ -40,13 +37,7 @@ export const AuthContextProvider = ({
 
   return (
     <AuthContext.Provider value={{ login, logout }}>
-      {!loading && children}
-
-      {loading && (
-        <CircularProgress
-          sx={{ position: "absolute", top: "50%", left: "50%" }}
-        />
-      )}
+      {children}
     </AuthContext.Provider>
   );
 };
