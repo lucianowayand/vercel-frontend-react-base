@@ -1,30 +1,62 @@
-# React + TypeScript + Vite
+# Vite + React Base Template for Vercel Deployment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository serves as a base template for **Vite + React** projects, optimized for deployment on **Vercel**. It includes **Material-UI** for a modern UI toolkit. Clone this repository for future projects to quickly get up and running with fast build times and seamless deployment.
 
-Currently, two official plugins are available:
+## Table of Contents
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Getting Started](#getting-started)
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+To get started with this template, follow these steps:
 
-- Configure the top-level `parserOptions` property like this:
+1. Clone the repository:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+   ```bash
+   git clone https://github.com/lucianowayand/vercel-frontend-react-base.git
+   ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+2. Install dependencies:
+    ```bash
+    cd vercel-frontend-react-base
+    npm install
+    ```
+
+3. Start the development server:
+    ```bash
+    npm run dev
+    ```
+
+4. Open your browser and navigate to `http://localhost:5173`
+
+## Features
+
+* Vite: A fast and lightweight build tool for modern web projects.
+* React: A powerful JavaScript library for building user interfaces.
+* Vercel Ready: Optimized configurations for deploying directly to Vercel.
+* Material-UI: Pre-installed for a modern component-based UI toolkit.
+* ESLint & Prettier: Code linting and formatting out of the box.
+
+## Prerequisites
+Before you begin, ensure you have the following installed:
+
+* Node.js (v14 or higher)
+* npm or yarn
+* Vercel CLI (optional but recommended for easy deployment)
+
+## Contributing
+If you'd like to contribute, feel free to fork the repository and submit a pull request. We welcome improvements and fixes.
+
+* Fork the project.
+* Create your feature branch: `git checkout -b feature/YourFeature.`
+* Commit your changes: `git commit -m 'Add some feature'.`
+* Push to the branch: `git push origin feature/YourFeature.`
+* Open a pull request.
+
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
